@@ -40,3 +40,69 @@ def fUpdateOptions(postID, HTMLvalue):
     except sqlite3.Error as err:
         print(err)
         return None
+
+
+
+def fGetLoginData(uname, password):
+    try:
+        connection = sqlite3.connect(dbURL)
+        cur = connection.cursor()
+
+        query = f"SELECT * FROM users WHERE username = '{uname}' AND password = '{password}'"
+
+        cur.execute(query)
+        tempData = cur.fetchone()
+        print(tempData)
+
+        userData = {
+            "user_id" : tempData[0],
+            "name" : tempData[1],
+            "username" : tempData[2],
+            "email" : tempData[3],
+            "password" : tempData[4],
+            "account_created_on" : tempData[5]
+        }
+        print("JSON userdata = \n",userData)
+        return userData
+    
+    except sqlite3.Error as err:
+        print(err)
+        return None
+    
+    finally:
+        connection.close()
+
+
+
+def fGetPostsDataShort():
+    try:
+        connection = sqlite3.connect(dbURL)
+        cur = connection.cursor()
+
+        query = "SELECT * FROM posts"
+        cur.execute(query)
+
+        tempData = cur.fetchall()
+        tempdict = {}
+        arr = []
+        for x in tempData:
+            tempdict = {
+                "post_id" : x[0],
+                "user_id" : x[1],
+                "username" : x[2],
+                "name" : x[3],
+                "post_title" : x[4],
+                "post_description" : x[5],
+                "total_votes" : x[6],
+                "posted_on" : x[7]
+            }
+            arr.append(tempdict)
+        print(arr)
+        return arr
+    
+    except sqlite3.Error as err:
+        print(err)
+        return None
+    
+    finally:
+        connection.close()
