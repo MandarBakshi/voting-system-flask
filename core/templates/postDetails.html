@@ -4,18 +4,37 @@
 {% block MainContent %}
 
 <div class="container">
-    <div class="card">
-        <h5 class="card-header">{{ postData.post[2] }}, {{ postData.post[7] }}</h5>
-        <div class="card-body">
-            <h3>{{ postData.post[4] }}</h3><br>
-            {{ postData.post[5] }}
-            <br>
-            <form action="" method="post">
-                {% for x in range(postData.options | length) %}
-            <label>{{ postData.options[x][3] }}<input type="radio" name="option" value="{{x}}"></label><br>
-            {% endfor %}
-            <button type="submit">Vote</button>
-            </form>
+    <br><br>
+    <div class="col-md-6">
+        <div class="card my-3">
+            <div class="card-header">
+                Posted by
+                    <b><a href="{{url_for('views.fHandleViewProfilePage', uid = postData.post[1])}}"> {{
+                            postData.post[3] }} </a></b>
+                    at <b> {{ postData.post[7] }} </b>
+            </div>
+
+            <div class="card-body">
+                <h3>{{ postData.post[4] }}</h3><br>
+                <p>
+                    {{ postData.post[5] }}
+                </p>
+
+                <form action="" method="post">
+                    {% for x in range(postData.options | length) %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="option" id="{{x}}" value="{{x}}">
+                        <label for="{{x}}" class="form-check-label">{{ postData.options[x][3] }}</label>
+                    </div>
+                    {% endfor %}
+
+                    <br>
+                    <div class="d-grid gap-2 my-3">
+                        <button class="btn btn-primary" type="submit">Vote</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -8,6 +8,14 @@
 - Vote on different polls.
 - Display results with charts and graphs.
 
+## Screenshots
+
+<img src="/screenshots/homepage.png" alt="Screenshot of Home Page" width="700">
+
+<img src="/screenshots/loginpage.png" alt="Screenshot of Login Page" width="700">
+
+<img src="/screenshots/postdetailspage.png" alt="Screenshot of Post Details Page" width="700">
+
 ## Drawbacks
 No kind of security system is implemented. This is a minimal project on which you can expand on later.
 ## Instructions

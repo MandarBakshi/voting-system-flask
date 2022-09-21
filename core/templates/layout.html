@@ -29,38 +29,39 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Features</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Contact us</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+
+                  {% if session['is_logged_in'] == True and session['userdata'] %}
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <!-- if userdata is in session and logged_in is true -->
-                      
-                      {% if session['is_logged_in'] == True and session['userdata'] %}
-                      Welcome, {{ session['userdata']['username'] }}
-                      {% else %}
-                          Welcome back!
-                      {% endif %}
-                      
+                    <a class="nav-link dropdown-toggle btn btn-outline-secondary mx-3 px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Hello, {{session['userdata']['name']}}
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Create a New Post</a></li>
+                      <li><a class="dropdown-item" href="#">My Posts</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('views.fHandleLogout')}}">Logout</a></li>
                     </ul>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                  </li>
+                  {% else %}
+                      <a class="btn btn-dark btn-sm mx-3 px-3" href="{{url_for('views.fHandleLoginPage')}}">Login</a>
+                  {% endif %}
+                  
+                  
+
                 </ul>
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
+                  <button class="btn btn-outline-success align-items-center" type="submit">Search</button>
                 </form>
               </div>
             </div>

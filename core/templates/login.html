@@ -1,11 +1,45 @@
+{% extends "layout.html" %}
+
+
+{% block MainContent %}
+
+
 {% if error %}
-        {{error}}
+{{error}}
 {% endif %}
 
 <br><br>
+<div class="container d-flex justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><h5 class="my-1">Login</h5></div>
+            <div class="card-body">
+                <form action="" method="post">
+                    <div class="container">
+                        <label class="form-label">Username</label>
+                        <input class="form-control" type="text" name="username">
+                        <br>
 
-<form action="" method="post">
-    <label><input type="text" name="username"></label><br>
-    <label><input type="text" name="password"></label><br>
-    <button type="submit">Login</button>
-</form>
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label">Password</label>
+                            <a href="localhost:5000/forgotpassword/">Forgot Password?</a>
+                        </div>
+                        <input class="form-control" type="text" name="password">
+                        <br>
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <br>
+        <div class="d-flex justify-content-around my-3 px-2">
+            <a class="btn btn-success" href="{{url_for('views.fHandleRegsiter')}}">Create a new account</a>
+            <a class="btn btn-outline-success" href="{{url_for('views.fHandleHome')}}">Continue to Home Page</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

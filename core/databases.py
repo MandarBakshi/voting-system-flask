@@ -52,18 +52,21 @@ def fGetLoginData(uname, password):
 
         cur.execute(query)
         tempData = cur.fetchone()
-        print(tempData)
+        # print(tempData)
 
-        userData = {
-            "user_id" : tempData[0],
-            "name" : tempData[1],
-            "username" : tempData[2],
-            "email" : tempData[3],
-            "password" : tempData[4],
-            "account_created_on" : tempData[5]
-        }
-        print("JSON userdata = \n",userData)
-        return userData
+        if len(tempData) == 0:
+            return None
+        else:
+            userData = {
+                "user_id" : tempData[0],
+                "name" : tempData[1],
+                "username" : tempData[2],
+                "email" : tempData[3],
+                "password" : tempData[4],
+                "account_created_on" : tempData[5]
+            }
+            # print("JSON userdata = \n",userData)
+            return userData
     
     except sqlite3.Error as err:
         print(err)

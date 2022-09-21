@@ -57,3 +57,16 @@ def fHandleLoginPage():
     
     if request.method == "GET":
         return render_template('login.html', error = None)
+
+
+@views.route('/register/')
+def fHandleRegsiter():
+    return "you are viewing register page"
+
+
+@views.route('/logout/')
+def fHandleLogout():
+    session['username'] = None
+    session['is_logged_in'] = False
+
+    return redirect(url_for('views.fHandleHome'))

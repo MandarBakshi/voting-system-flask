@@ -9,11 +9,11 @@
     <div class="row">
         {% for post in postData %}
         <div class="col-md-6 col-lg-4">
-            <div class="card mx-2 my-2">
+            <div class="card mx-2 my-3">
                 <h6 class="card-header"><span>
                     <a style="text-decoration: none;" href="{{url_for('views.fHandleViewProfilePage', uid = post.user_id)}}">@{{ post.username }}</a>
                 </span>, {{ post.posted_on }}</h6>
-                <div class="card-body"> {{ post.post_description }} </div>
+                <div class="card-body" style="height: 150px; overflow-y:scroll"> {{ post.post_description }} </div>
                 <div class="card-footer d-flex justify-content-between align-items-center">
                     <span class="badge bg-secondary">Votes: {{post.total_votes}}</span>
                     <a class="btn btn-sm btn-outline-primary" href="{{url_for('views.fHandlePostPage', id1 = post.post_id)}}">READ MORE</a>
