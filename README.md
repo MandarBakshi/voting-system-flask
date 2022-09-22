@@ -14,6 +14,8 @@
 
 <img src="/screenshots/loginpage.png" alt="Screenshot of Login Page" width="700">
 
+<img src="/screenshots/login_invalid.png" alt="Screenshot of Login Page" width="700">
+
 <img src="/screenshots/postdetailspage.png" alt="Screenshot of Post Details Page" width="700">
 
 ## Drawbacks

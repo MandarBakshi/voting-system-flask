@@ -3,9 +3,25 @@
 
 {% block MainContent %}
 
-<div class="container">
+<div class="container d-flex justify-content-center">
     <br><br>
     <div class="col-md-6">
+
+        {{session}}
+        {% if session.get('is_logged_in') != None %}
+                {% if session['is_logged_in'] == False %}
+                    <div class="alert alert-warning" role="alert">
+                        In order to vote this post, you must be <b>Logged In</b>
+                    </div>
+                {% endif %}
+        {% endif %}
+        
+        
+        <!-- <div class="alert alert-warning" role="alert">
+            In order to vote this post, you must be <b>Logged In</b>
+        </div> -->
+        
+
         <div class="card my-3">
             <div class="card-header">
                 Posted by

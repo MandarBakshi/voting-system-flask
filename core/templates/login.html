@@ -3,16 +3,20 @@
 
 {% block MainContent %}
 
-
-{% if error %}
-{{error}}
-{% endif %}
-
 <br><br>
 <div class="container d-flex justify-content-center">
     <div class="col-md-6">
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+        {% endif %}
+
         <div class="card">
-            <div class="card-header"><h5 class="my-1">Login</h5></div>
+            <div class="card-header">
+                <h5 class="my-1">Login</h5>
+            </div>
             <div class="card-body">
                 <form action="" method="post">
                     <div class="container">

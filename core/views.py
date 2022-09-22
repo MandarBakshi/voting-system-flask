@@ -53,7 +53,7 @@ def fHandleLoginPage():
             # return render_template('home.html', userData)
             return redirect(url_for('views.fHandleHome'))
         else:
-            return render_template('login.html', error = "Incorrect credentials")
+            return render_template('login.html', error = "Incorrect Credentials")
     
     if request.method == "GET":
         return render_template('login.html', error = None)
@@ -66,7 +66,7 @@ def fHandleRegsiter():
 
 @views.route('/logout/')
 def fHandleLogout():
-    session['username'] = None
+    session['userdata'] = None
     session['is_logged_in'] = False
 
     return redirect(url_for('views.fHandleHome'))

@@ -52,9 +52,9 @@ def fGetLoginData(uname, password):
 
         cur.execute(query)
         tempData = cur.fetchone()
-        # print(tempData)
+        # print("\n\n\ntempdata---------------------------\n",tempData,"\n\n\n")
 
-        if len(tempData) == 0:
+        if tempData == None:
             return None
         else:
             userData = {
@@ -100,7 +100,7 @@ def fGetPostsDataShort():
                 "posted_on" : x[7]
             }
             arr.append(tempdict)
-        print(arr)
+        # print(arr)
         return arr
     
     except sqlite3.Error as err:
